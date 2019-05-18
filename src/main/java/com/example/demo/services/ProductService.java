@@ -44,9 +44,11 @@ public class ProductService {
 		productRepository.deleteById(pid);
 	}
 	
-	public void editProduct(int pid) {
+	public Product editProduct(int pid) {
 		
-			productRepository.findById(pid); 
+			//return productRepository.findById(pid); 
+		return productRepository.findById(pid).orElse(null);
+		
 	}
 }
 

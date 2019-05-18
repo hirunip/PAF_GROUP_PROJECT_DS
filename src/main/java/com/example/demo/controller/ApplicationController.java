@@ -60,7 +60,7 @@ public class ApplicationController {
 	
 	@RequestMapping("/edit-product")
 	public String editProduct(@RequestParam int pid , HttpServletRequest request) {
-		//request.setAttribute("product", productService.editProduct(pid));
+		request.setAttribute("product", productService.editProduct(pid));
 		request.setAttribute("mode", "MODE_UPDATE");
 		return "welcome";
 	}

@@ -118,7 +118,7 @@
 									<td><a href="/delete-product?pid=${product.pid }"><span
 											class="glyphicon glyphicon-trash"></span></a></td>
 									<td><a href="/edit-product?pid=${product.pid }"><span
-											class="glyphicon glyphicon-pencil"></span></a></td>
+											class="glyphicon glyphicon-pencil"></span>Update</a></td>
 									<td><a href=""><span
 											class="glyphicon glyphicon-shopping-cart"></span></a></td>
 									
