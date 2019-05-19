@@ -1,0 +1,19 @@
+package com.example.demo.Controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@org.springframework.web.bind.annotation.RestController
+public class RestController {
+	
+	@GetMapping("/")
+	public String hello() {
+		return "This  is home page";
+	}
+	
+	@GetMapping("Insert-user")
+	public String saveUser(@RequestParam String username, @RequestParam String firstname, @RequestParam String lastname, @RequestParam int phone, @RequestParam String address, @RequestParam String email, @RequestParam String password) {
+		return "User Saved";
+	}
+
+}

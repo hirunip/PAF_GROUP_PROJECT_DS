@@ -1,0 +1,10 @@
+package com.example.demo.Controller;
+
+@org.springframework.web.bind.annotation.RestController
+public class RestController {
+	
+	public String hello() {
+		return "This  is home page";
+	}
+
+}
