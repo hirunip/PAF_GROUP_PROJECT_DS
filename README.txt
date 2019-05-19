@@ -6,4 +6,8 @@ The database file is inside the "Database file of Product Management" zip file.
 
 Seperate it , extract it and open it from mysql workbench.
 
-Then you can run the programme.
+After seperate the database file ,you can run the programme.
+
+Tabs related to Product Management ->
+	Add product --- For adding products for system
+	Products ----- View all products
