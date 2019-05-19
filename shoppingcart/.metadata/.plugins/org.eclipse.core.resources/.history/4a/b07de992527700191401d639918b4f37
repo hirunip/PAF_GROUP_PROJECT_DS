@@ -1,0 +1,8 @@
+package com.example.demo.controller;
+
+
+@controller
+public class shoppingCartController {
+	
+
+}

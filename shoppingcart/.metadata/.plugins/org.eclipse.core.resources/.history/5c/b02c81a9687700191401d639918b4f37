@@ -1,0 +1,5 @@
+package org.springframework.web.bind.annoation;
+
+public @interface CartController {
+
+}

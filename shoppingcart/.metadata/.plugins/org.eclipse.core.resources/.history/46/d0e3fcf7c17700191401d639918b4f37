@@ -1,0 +1,88 @@
+package com.example.demo.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "shoppingcart")
+public class Cart {
+	
+	
+		@Id
+		private int sid;
+		private int quantity;
+		private String size;		 
+		private String pcode;
+		private String pname;
+		private double price;
+		
+		
+		
+		public Cart() {
+			
+		}
+		public Cart(int quantity, String size, int products_pid,String pcode,String pname,double price) {
+			super();
+			this.quantity = quantity;
+			this.size = size;
+			this.products_pid = products_pid;
+			this.pcode=pcode;
+			this.pname=pname;
+			this.price=price;
+		}
+		
+		
+		public int getsid() {
+			return sid;
+		}
+		public void setsid(int sid) {
+			this.sid = sid;
+		}
+		public int getquantity() {
+			return quantity;
+		}
+		public void setquantity(int quantity) {
+			this.quantity = quantity;
+		}
+		public String size() {
+			return size;
+		}
+		public void setsize(String size) {
+			this.size = size;
+		}
+		
+		
+		public String pname() {
+			return pname;
+		}
+		public void setpname(String pname) {
+			this.pname = pname;
+		}
+		public String pcode() {
+			return pcode;
+		}
+		public void setpcode(String pcode) {
+			this.pcode = pcode;
+		}
+		public double price() {
+			return price;
+		}
+		public void setprice(double price) {
+			this.price = price;
+		}
+
+		@Override
+		public String toString() {
+			return "shoppingcart [sid=" + sid + ", quantity=" + quantity + ", size=" + size + ", products_pid=" + products_pid + ",pname=" + pname + ",pcode=" + pcode + ",price=" + price + "]";
+		}
+		
+		
+
+	
+}
+
+	
+	
+
+

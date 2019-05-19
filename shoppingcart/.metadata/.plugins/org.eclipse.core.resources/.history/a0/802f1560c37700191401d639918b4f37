@@ -1,0 +1,68 @@
+package com.example.demo.controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.demo.model.Cart;
+import com.example.demo.model.Product;
+import com.example.demo.services.CartService;
+import com.example.demo.services.ProductService;
+
+@Controller
+public class shoppingCartController {
+	@Autowired
+	private CartService cartService;
+	
+	@RequestMapping("/addCart") 
+	public String addition(HttpServletRequest request) {
+		
+		request.setAttribute("mode", "All_PRODUCTS");
+		return "welcome";
+	}
+	
+	@PostMapping("/save-cart")
+	public String addProduct(@RequestParam String pname, @RequestParam String pcode,@RequestParam int price, 
+			BindingResult bindingResult , HttpServletRequest request ) {
+	Cart cart = new Cart();
+	cart.setpname(pname);
+	cart.setpcode(pcode);
+	cart.setprice(price);
+	cart.setproducts_pid(1);
+	request.setAttribute("mode", "All_PRODUCTS");
+	cartService.saveMyCart(cart);
+		return "welcome";
+		
+	}
+	
+	@GetMapping("/show-cart")
+	public String showAllProducts(HttpServletRequest request) {
+		request.setAttribute("carts", cartService.showAllCarts());
+		request.setAttribute("mode", "ALL_CART");
+		return "welcome";
+	}
+	
+	@RequestMapping("/delete-cart")
+	public String deleteProduct(@RequestParam int sid , HttpServletRequest request) {
+		cartService.deletemycart(sid);
+		request.setAttribute("carts", cartService.showAllCarts());
+		request.setAttribute("mode", "ALL_CART");
+		return "welcome";
+	}
+	
+	@RequestMapping("/edit-product")
+	public String editCart(@RequestParam int sid , HttpServletRequest request) {
+		//request.setAttribute("cart", cartService.editCart(sid));
+		request.setAttribute("mode", "MODE-UPDATE-CART");
+		return "welcome";
+	}
+	
+
+}

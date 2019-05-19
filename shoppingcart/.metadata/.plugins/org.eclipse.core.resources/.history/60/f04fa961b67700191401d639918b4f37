@@ -1,0 +1,61 @@
+package com.example.demo.controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.demo.model.Cart;
+import com.example.demo.model.Product;
+import com.example.demo.services.CartService;
+import com.example.demo.services.ProductService;
+
+@Controller
+public class shoppingCartController {
+	@Autowired
+	private CartService cartService;
+	
+	
+	@PostMapping("/save-cart")
+	public String addProduct(@RequestParam int sid, @ModelAttribute Cart cart , BindingResult bindingResult , HttpServletRequest request ) {
+	cartService.saveMyCart(cart);
+	request.setAttribute("mode", "All_PRODUCTS");
+	
+	
+	
+	Cart cart = new Cart();
+	cart.setproducts_pid(si);
+		return "welcome";
+		
+	}
+	
+	@GetMapping("/show-cart")
+	public String showAllProducts(HttpServletRequest request) {
+		request.setAttribute("carts", cartService.showAllCarts());
+		request.setAttribute("mode", "ALL_CARTS");
+		return "welcome";
+	}
+	
+	@RequestMapping("/delete-cart")
+	public String deleteProduct(@RequestParam int sid , HttpServletRequest request) {
+		cartService.deletemycart(sid);
+		request.setAttribute("carts", cartService.showAllCarts());
+		request.setAttribute("mode", "ALL_CARTS");
+		return "welcome";
+	}
+	
+	@RequestMapping("/edit-product")
+	public String editCart(@RequestParam int sid , HttpServletRequest request) {
+		//request.setAttribute("cart", cartService.editCart(sid));
+		request.setAttribute("mode", "MODE-UPDATE-CART");
+		return "welcome";
+	}
+	
+
+}

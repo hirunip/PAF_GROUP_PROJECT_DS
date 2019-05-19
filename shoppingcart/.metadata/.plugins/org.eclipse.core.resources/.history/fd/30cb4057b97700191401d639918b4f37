@@ -1,0 +1,55 @@
+package com.example.demo.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
+
+import com.example.demo.model.Cart;
+import com.example.demo.model.Product;
+import com.example.demo.repository.CartRepository;
+import com.example.demo.repository.ProductRepository;
+
+@Service
+@Transactional
+public class CartService {
+	
+private final CartRepository cartRepository;
+	
+	public CartService(CartRepository cartRepository) {
+		
+		this.cartRepository = cartRepository;
+	}
+	
+	public void saveMyCart(Cart cart) {
+		
+		cartRepository.save(cart);
+	}
+	
+	
+public List<Cart>showAllCarts(){
+		
+		List<Cart>carts = new ArrayList<Cart>();
+		for(Cart cart : cartRepository.findAll()) {
+			
+			carts.add(cart); 
+			
+		}
+		
+		return carts;
+	}
+	
+	public void deletemycart(int sid) {
+		
+		cartRepository.deleteById(sid);
+	}
+	
+	public void editProduct(int sid) {
+		
+			cartRepository.findById(sid); 
+	}
+	
+
+}
